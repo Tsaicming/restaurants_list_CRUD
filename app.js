@@ -4,6 +4,8 @@ const port = 3000
 const exphbs = require('express-handlebars')
 const restaurantList = require('./restaurant.json')
 const mongoose = require('mongoose')  //載入 mongoose
+const bodyParser = require('body-parser')
+const Restaurant = require('./models/restaurant')
 
 mongoose.connect('mongodb://localhost/restaurant-list')  //連線到 mongoDB
 
@@ -24,6 +26,7 @@ db.once('open', () => {
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.listen(port, () => {
   console.log(`Express is listening on localhost:${port}`)
@@ -31,7 +34,10 @@ app.listen(port, () => {
 
 //home page (main, index)
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList.results })
+  Restaurant.find()
+    .lean()
+    .then(restaurants => res.render('index', { restaurants }))
+    .catch(error => console.error(error))
 })
 
 //restaurant detail ( show )
