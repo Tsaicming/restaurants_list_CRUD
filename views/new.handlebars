@@ -1,0 +1,107 @@
+<header>
+  <!-- navigation -->
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
+          width="30" height="30" class="d-inline-block align-top" alt="好。吃">
+        我的餐廳清單
+      </a>
+    </div>
+  </nav>
+
+  <div class="banner"></div>
+</header>
+
+<!-- 輸入列表 -->
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 mx-auto">
+
+      <h1 class="mb-1 restaurant-show-title">新增餐廳</h1>
+      <form action="/restaurants" method="POST">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-md-10 mx-auto">
+
+              <p class="mb-1">
+                <span class="text-secondary">
+                  <i class="fas fa-utensils pr-2"></i>
+                  中文名稱：
+                </span>
+                <input type="text" placeholder="chinese name" name="name">
+              </p>
+
+              <p class="mb-1">
+                <span class="text-secondary">
+                  <i class="fas fa-utensils pr-2"></i>
+                  英文名稱：
+                </span>
+                <input type="text" placeholder="english name" name="name_en">
+              </p>
+
+              <p class="mb-1">
+                <span class="text-secondary">
+                  <i class="fas fa-utensils pr-2"></i>
+                  類別：
+                </span>
+                <input type="text" placeholder="type" name="category">
+              </p>
+
+              <p class="mb-1">
+                <span class="text-secondary">
+                  <i class="fas fa-map-marker-alt pr-2"></i>
+                  地址：
+                </span>
+                <input type="text" placeholder="address" name="location">
+              </p>
+
+              <p class="mb-1">
+                <span class="text-secondary">
+                  <i class="fas fa-location-arrow pr-2 fa-xs"></i>
+                  Google Map：
+                </span>
+                <input type="text" placeholder="URL" name="google_map">
+              </p>
+
+              <p class="mb-1">
+                <span class="text-secondary">
+                  <i class="fas fa-mobile-alt pr-2"></i>
+                  電話：
+                </span>
+                <input type="text" placeholder="phone number" name="phone">
+              </p>
+
+              <p class="mb-1">
+                <span class="text-secondary">
+                  <i class="fas fa-pen pr-2"></i>
+                  簡述：
+                </span>
+                <input type="text" placeholder="text" name="description">
+              </p>
+
+              <p class="mb-1">
+                <span class="text-secondary">
+                  <i class="fas fa-star pr-2"></i>
+                  評分：
+                </span>
+                <input type="number" placeholder="score" name="rating">
+              </p>
+
+              <p class="mb-1">
+                <span class="text-secondary">
+                  <i class="fas fa-utensils pr-2"></i>
+                  照片：
+                </span>
+                <input type="text" placeholder="URL" name="image">
+              </p>
+
+              <button type="submit" class="btn btn-primary">新增</button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

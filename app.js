@@ -40,6 +40,17 @@ app.get('/', (req, res) => {
     .catch(error => console.error(error))
 })
 
+//新增列表 (new)
+app.get('/restaurants/new', (req, res) => {
+  return res.render('new')
+})
+
+app.post('/restaurants', (req, res) => {
+  return Restaurant.create(req.body)
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
 //restaurant detail ( show )
 app.get('/restaurants/:restaurant_id', (req, res) => {
   const restaurant =
