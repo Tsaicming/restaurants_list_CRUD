@@ -20,7 +20,8 @@
 <!-- search bar -->
 <div class="container search-bar">
   <div class="search-bar-outer">
-    <div class="search-bar-inner">
+    <div class="search-bar-inner d-flex justify-content-between align-items-end">
+
       <form action="/search">
         <h4 class="mb-2">尋找餐廳：</h4>
         <div class="input-group">
@@ -31,9 +32,25 @@
           </div>
         </div>
       </form>
+
+      <form action="/sort?_method=POST" method="POST">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          排序
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="submit" name="sort" value="asc">A -> Z</button>
+          <button class="dropdown-item" type="submit" name="sort" value="desc">Z -> A</button>
+          <button class="dropdown-item" type="submit" name="sort" value="category">類別</button>
+          <button class="dropdown-item" type="submit" name="sort" value="location">地區</button>
+        </div>
+      </form>
+
     </div>
   </div>
 </div>
+
+
 
 <!-- restaurant list -->
 <div class="container mt-5">

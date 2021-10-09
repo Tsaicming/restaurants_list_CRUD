@@ -115,3 +115,19 @@ app.post('/restaurants/:id/delete', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
+
+//sort
+app.post('/sort', (req, res) => {
+  const sort = req.body.sort
+  const resort = {
+    asc: { name: 'asc' },
+    desc: { name: 'desc' },
+    category: { category: 'asc' },
+    location: { location: 'asc' }
+  }
+  Restaurant.find()
+    .lean()
+    .sort(resort[sort])
+    .then(restaurants => { res.render('index', { restaurants }) })
+    .catch(error => console.log(error))
+})
