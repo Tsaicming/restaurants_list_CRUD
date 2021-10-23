@@ -54,44 +54,12 @@ router.put('/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
-//search bar ( index )
-router.get('/search', (req, res) => {
-  const keyword = req.query.keyword
-
-  Restaurant
-    .find()
-    .lean()
-    .then(restaurantsList => {
-      const restaurants = restaurantsList.filter(restaurant => {
-        return restaurant.name.toLowerCase().includes(keyword.toLowerCase()) || restaurant.category.toLowerCase().includes(keyword.toLowerCase())
-      })
-      res.render('index', { restaurants })
-    })
-    .catch(error => console.log(error))
-})
-
 // delete
 router.delete('/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
-
-// sort
-router.post('/sort', (req, res) => {
-  const sort = req.body.sort
-  const resort = {
-    asc: { name: 'asc' },
-    desc: { name: 'desc' },
-    category: { category: 'asc' },
-    location: { location: 'asc' }
-  }
-  Restaurant.find()
-    .lean()
-    .sort(resort[sort])
-    .then(restaurants => { res.render('index', { restaurants }) })
     .catch(error => console.log(error))
 })
 
