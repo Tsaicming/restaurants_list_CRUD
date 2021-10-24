@@ -1,10 +1,13 @@
 const express = require('express')
 const session = require('express-session')
 const app = express()
-const port = 3001
+const port = 3000
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 const restaurantList = require('./restaurant.json')
 const mongoose = require('mongoose')  //載入 mongoose
 const bodyParser = require('body-parser')
