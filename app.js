@@ -1,12 +1,14 @@
 const express = require('express')
+const session = require('express-session')
 const app = express()
-const port = 3000
+const port = 3001
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const restaurantList = require('./restaurant.json')
 const mongoose = require('mongoose')  //載入 mongoose
 const bodyParser = require('body-parser')
 const routes = require('./routes')    // 載入路由器，會自動去尋找目錄下 index.js 的檔案
+const usePassport = require('./config/passport')
 
 mongoose.connect('mongodb://localhost/restaurant-list')  //連線到 mongoDB
 
@@ -26,9 +28,18 @@ db.once('open', () => {
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
+
+app.use(session({
+  secret: 'ThisIsMySecret',
+  resave: false,
+  saveUninitialized: true
+}))
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
+
+usePassport(app)
+
 app.use(routes)
 
 app.listen(port, () => {
