@@ -4,6 +4,7 @@ const app = express()
 const port = 3001
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
+const flash = require('connect-flash')
 const restaurantList = require('./restaurant.json')
 const mongoose = require('mongoose')  //載入 mongoose
 const bodyParser = require('body-parser')
@@ -40,9 +41,12 @@ app.use(methodOverride('_method'))
 
 usePassport(app)
 
+app.use(flash())
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.user = req.user
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
   next()
 })
 
