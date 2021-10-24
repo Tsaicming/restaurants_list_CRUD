@@ -1,18 +1,3 @@
-<header>
-  <!-- navigation -->
-  <nav class="navbar navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
-          width="30" height="30" class="d-inline-block align-top" alt="好。吃">
-        我的餐廳清單
-      </a>
-    </div>
-  </nav>
-
-  <div class="banner"></div>
-</header>
-
 <!-- 輸入列表 -->
 <div class="container">
   <div class="row">
@@ -29,7 +14,7 @@
                   <i class="fas fa-utensils pr-2"></i>
                   中文名稱：
                 </span>
-                <input type="text" placeholder="chinese name" name="name" value="{{ restaurant.name}}">
+                <input type="text" placeholder="chinese name" name="name" value="{{ restaurant.name}}" required>
               </p>
 
               <p class="mb-1">
@@ -37,7 +22,7 @@
                   <i class="fas fa-utensils pr-2"></i>
                   英文名稱：
                 </span>
-                <input type="text" placeholder="english name" name="name_en" value="{{ restaurant.name_en}}">
+                <input type="text" placeholder="english name" name="name_en" value="{{ restaurant.name_en}}" required>
               </p>
 
               <p class="mb-1">
@@ -88,7 +73,7 @@
                   評分：
                 </span>
                 <input type="number" max="5.0" min="1.0" step="0.1" placeholder="score" name="rating"
-                  value="{{ restaurant.rating}}">
+                  value="{{ restaurant.rating}}" required>
               </p>
 
               <p class="mb-1">
